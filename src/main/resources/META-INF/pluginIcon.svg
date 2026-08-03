@@ -2,14 +2,33 @@
   <!-- White background: keeps the mark legible in light theme and on the Marketplace listing card -->
   <rect width="1024" height="1024" fill="#FFFFFF"/>
 
-  <!-- The GraphQL logo's own hexagon-graph motif, in the workspace's brand palette -->
-  <polygon points="512,140 830,325 830,695 512,880 194,695 194,325"
-           fill="none" stroke="#0151FC" stroke-width="36"/>
-  <circle cx="512" cy="140" r="46" fill="#0151FC"/>
-  <circle cx="830" cy="325" r="46" fill="#01B3FD"/>
-  <circle cx="830" cy="695" r="46" fill="#01B3FD"/>
-  <circle cx="512" cy="880" r="46" fill="#02F172"/>
-  <circle cx="194" cy="695" r="46" fill="#01B3FD"/>
-  <circle cx="194" cy="325" r="46" fill="#01B3FD"/>
-  <circle cx="512" cy="510" r="46" fill="#12203A"/>
+  <path d="
+    M 511,81
+    L 847,283
+    L 725,351
+    L 508,223
+    L 296,348
+    L 296,588
+    L 463,691
+    L 342,765
+    L 173,665
+    L 172,281
+    Z"
+    fill="#0151FC"
+  />
+
+  <path d="
+    M 846,412
+    L 844,668
+    L 518,863
+    L 393,795
+    L 724,589
+    L 721,540
+    L 567,538
+    L 568,412
+    Z"
+    fill="#01B3FD"
+  />
+
+  <polygon points="569,413 695,413 695,539 569,539" fill="#02F172" />
 </svg>
