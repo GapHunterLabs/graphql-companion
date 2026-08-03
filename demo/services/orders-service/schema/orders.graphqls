@@ -1,0 +1,37 @@
+type Order implements Node & Timestamped {
+  id: ID!
+  customerId: ID!
+  lines: [OrderLine!]!
+  status: OrderStatus!
+  total: Money!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type OrderLine {
+  sku: String!
+  quantity: Int!
+  unitPrice: Money!
+}
+
+enum OrderStatus {
+  PENDING
+  PAID
+  SHIPPED
+  CANCELLED
+}
+
+type Query {
+  order(id: ID!): Order
+  ordersByCustomer(customerId: ID!, status: OrderStatus): [Order!]!
+}
+
+type Mutation {
+  placeOrder(customerId: ID!, lines: [OrderLineInput!]!): Order!
+  cancelOrder(id: ID!): Order!
+}
+
+input OrderLineInput {
+  sku: String!
+  quantity: Int!
+}

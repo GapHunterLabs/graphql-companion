@@ -1,0 +1,10 @@
+{
+  "projects": {
+    "users": {
+      "schema": ["services/users-service/schema/*.graphqls", "shared/schema/*.graphqls"]
+    },
+    "orders": {
+      "schema": ["services/orders-service/schema/*.graphqls", "shared/schema/*.graphqls"]
+    }
+  }
+}

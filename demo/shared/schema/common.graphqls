@@ -1,0 +1,13 @@
+"""Common scalars and interfaces shared across service schemas."""
+
+scalar DateTime
+scalar Money
+
+interface Node {
+  id: ID!
+}
+
+interface Timestamped {
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}

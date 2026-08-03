@@ -1,0 +1,30 @@
+type User implements Node & Timestamped {
+  id: ID!
+  email: String!
+  name: String!
+  role: UserRole!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+enum UserRole {
+  ADMIN
+  MEMBER
+  VIEWER
+}
+
+input CreateUserInput {
+  email: String!
+  name: String!
+  role: UserRole = MEMBER
+}
+
+type Query {
+  user(id: ID!): User
+  users(role: UserRole): [User!]!
+}
+
+type Mutation {
+  createUser(input: CreateUserInput!): User!
+  deactivateUser(id: ID!): Boolean!
+}

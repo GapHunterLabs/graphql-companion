@@ -1,0 +1,32 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <id>dev.gaphunter.graphqlcompanion</id>
+    <name>GraphQL Companion</name>
+    <vendor>Gap Hunter Labs</vendor>
+    <description><![CDATA[
+        <p>Fast syntax highlighting for <code>.graphql</code>/<code>.graphqls</code>
+        files that stays fast on large schema files, and multi-schema
+        discovery that works out of the box — with or without a
+        <code>.graphqlconfig</code> file.</p>
+        <p>Built with a purpose-made, single-pass lexer instead of a
+        general-purpose parser struggling on scope resolution — the direct,
+        structural fix for large schema files becoming slow and
+        highlighting-free.</p>
+        <p>Free. No license nags, no telemetry, no popups.</p>
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <fileType name="GraphQL" implementationClass="dev.gaphunter.graphqlcompanion.lang.GraphqlFileType"
+                   fieldName="INSTANCE" language="GraphQLCompanion" extensions="graphql;graphqls"/>
+        <lang.parserDefinition language="GraphQLCompanion" implementationClass="dev.gaphunter.graphqlcompanion.lang.GraphqlParserDefinition"/>
+        <lang.syntaxHighlighterFactory language="GraphQLCompanion" implementationClass="dev.gaphunter.graphqlcompanion.lang.GraphqlSyntaxHighlighterFactory"/>
+        <applicationService serviceImplementation="dev.gaphunter.graphqlcompanion.settings.GraphqlCompanionSettings"/>
+        <applicationConfigurable
+            parentId="tools"
+            instance="dev.gaphunter.graphqlcompanion.settings.GraphqlCompanionConfigurable"
+            id="dev.gaphunter.graphqlcompanion.settings.GraphqlCompanionConfigurable"
+            displayName="GraphQL Companion"/>
+    </extensions>
+</idea-plugin>
