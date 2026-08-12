@@ -54,7 +54,7 @@ the current project.
 ## Enterprise / Team Licensing
 
 Need enterprise features, schema validation, or team licensing? Contact
-us at **kennyj.diazm@gmail.com**.
+us at **gaphunterlabs@gmail.com**.
 
 ## Development
 
