@@ -52,8 +52,7 @@ object SchemaDiscovery {
     // enough for typical .graphqlconfig schema glob patterns, without a
     // full glob library dependency. (Deliberately a line comment, not a
     // KDoc block: a literal star-slash inside an example glob pattern
-    // would close a /** block comment early -- see SDK_GOTCHAS.md's
-    // documented Kotlin nested-comment gotcha, confirmed the hard way
+    // would close a /** block comment early -- confirmed the hard way
     // while writing this exact function.)
     private fun matchesGlob(path: String, glob: String): Boolean {
         val normalizedPath = path.replace('\\', '/')
