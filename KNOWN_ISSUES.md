@@ -10,9 +10,8 @@ errors: `Unresolved reference 'matchesGlob'` at the call site, `Missing
 '}'` mid-file, and `Unclosed comment` pointing at the very last line of
 `SchemaDiscovery.kt` — none of them anywhere near the actual mistake.
 
-**Root cause:** the exact gotcha already documented in this workspace's
-`SDK_GOTCHAS.md` and independently rediscovered in
-`ansible-companion/future/v0.2-ansible-completion/README.md` — Kotlin
+**Root cause:** a known Kotlin comment-nesting gotcha, independently
+rediscovered here — Kotlin
 block comments (`/* */`) **nest**, unlike Java/C. A KDoc comment
 (`/** ... */`) documenting `matchesGlob`'s glob-matching behavior
 included an example pattern containing a literal star-slash sequence
@@ -39,8 +38,8 @@ diff — is the actual verification step, not optional.
 exercises the same file this bug was found in (transitively, via
 `SchemaDiscovery`'s own test suite).
 
-**Lesson (reinforcing the existing SDK_GOTCHAS.md entry with a second
-real occurrence):** never let a literal `/*` or `*/` substring appear
+**Lesson (a second real occurrence of the same known gotcha):** never
+let a literal `/*` or `*/` substring appear
 inside a Kotlin comment, including inside an "escaped" or
 entity-encoded example — Kotlin's lexer processes comment delimiters
 before any string/entity semantics could possibly apply, so no
