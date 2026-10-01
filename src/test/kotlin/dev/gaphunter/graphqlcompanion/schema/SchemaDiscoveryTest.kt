@@ -54,4 +54,15 @@ class SchemaDiscoveryTest {
         val groups = SchemaDiscovery.discover(paths, configProjects = null)
         assertEquals(setOf("users-service", "orders-service"), groups.map { it.name }.toSet())
     }
+
+    // A single star stays within one path segment, as documented (before
+    // 0.1.2 it matched across directories like a double star).
+    @Test
+    fun `a single star does not cross directories, a double star does`() {
+        val paths = listOf("services/users/schema/users.graphqls", "services/users/v2/schema/users.graphqls")
+        val single = SchemaDiscovery.discover(paths, mapOf("api" to listOf("services/*/schema/*.graphqls")))
+        assertEquals(listOf("services/users/schema/users.graphqls"), single.single().filePaths)
+        val double = SchemaDiscovery.discover(paths, mapOf("api" to listOf("services/**/schema/*.graphqls")))
+        assertEquals(paths, double.single().filePaths)
+    }
 }

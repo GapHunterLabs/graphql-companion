@@ -4,6 +4,18 @@
 
 ## [Unreleased]
 
+## [0.1.2]
+
+### Fixed
+
+- Settings > Tools > GraphQL Companion always said "No schema files
+  detected yet in this project": the schema discovery was never run on
+  the project. The page now lists the project's schema groups -- the
+  `projects` of a `.graphqlconfig` at the project root, or groups by
+  directory -- computed in the background when it opens.
+- A single `*` in a `.graphqlconfig` schema glob matched across
+  directories; it now stays within one path segment (`**` crosses them).
+
 ## [0.1.1]
 
 ### Fixed
@@ -30,6 +42,7 @@
   go-to-definition — deferred, not attempted in v0.1 (a full language
   server's worth of scope, out of reach for a one-night build).
 
-[Unreleased]: https://github.com/GapHunterLabs/graphql-companion/compare/0.1.1...HEAD
+[Unreleased]: https://github.com/GapHunterLabs/graphql-companion/compare/0.1.2...HEAD
+[0.1.2]: https://github.com/GapHunterLabs/graphql-companion/compare/0.1.1...0.1.2
 [0.1.1]: https://github.com/GapHunterLabs/graphql-companion/compare/0.1.0...0.1.1
 [0.1.0]: https://github.com/GapHunterLabs/graphql-companion/commits/0.1.0
