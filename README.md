@@ -4,6 +4,11 @@ IntelliJ-family plugin. Fast syntax highlighting for
 `.graphql`/`.graphqls` files, and multi-schema discovery that works out
 of the box — with or without a `.graphqlconfig` file.
 
+![GraphQL Companion: fast GraphQL schema highlighting, multi-schema projects mapped](docs/media/hero.gif)
+
+On its own:
+[Schema groups](docs/media/01-schema-groups.gif)
+
 ## Why it exists
 
 Born from real evidence in JetBrains's own official GraphQL plugin
