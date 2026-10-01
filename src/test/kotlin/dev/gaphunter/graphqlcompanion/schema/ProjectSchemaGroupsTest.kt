@@ -22,6 +22,32 @@ class ProjectSchemaGroupsTest : BasePlatformTestCase() {
         assertEquals(listOf("services/orders-service/schema/orders.graphqls"), groups.first { it.name == "orders-service" }.filePaths)
     }
 
+    fun testGraphqlconfigProjectsGroupTheirServiceAndSharedSchemas() {
+        myFixture.addFileToProject(
+            ".graphqlconfig",
+            """
+            {
+              "projects": {
+                "users": {
+                  "schema": ["services/users-service/schema/*.graphqls", "shared/schema/*.graphqls"]
+                },
+                "orders": {
+                  "schema": ["services/orders-service/schema/*.graphqls", "shared/schema/*.graphqls"]
+                }
+              }
+            }
+            """.trimIndent(),
+        )
+        myFixture.addFileToProject("services/orders-service/schema/orders.graphqls", "type Order { id: ID! }\n")
+        myFixture.addFileToProject("services/users-service/schema/users.graphqls", "type User { id: ID! }\n")
+        myFixture.addFileToProject("shared/schema/common.graphqls", "scalar DateTime\n")
+
+        val groups = ProjectSchemaGroups.detect(project).associate { it.name to it.filePaths }
+
+        assertEquals(listOf("services/users-service/schema/users.graphqls", "shared/schema/common.graphqls"), groups["users"])
+        assertEquals(listOf("services/orders-service/schema/orders.graphqls", "shared/schema/common.graphqls"), groups["orders"])
+    }
+
     fun testNoSchemaFilesMeansNoGroups() {
         myFixture.addFileToProject("notes.txt", "not a schema\n")
         assertEquals(emptyList<SchemaGroup>(), ProjectSchemaGroups.detect(project))
