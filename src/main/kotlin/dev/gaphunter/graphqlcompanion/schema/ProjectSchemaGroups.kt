@@ -1,5 +1,6 @@
 package dev.gaphunter.graphqlcompanion.schema
 
+import com.intellij.openapi.diagnostic.logger
 import com.intellij.openapi.progress.ProgressManager
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.project.guessProjectDir
@@ -25,6 +26,8 @@ import dev.gaphunter.graphqlcompanion.lang.GraphqlFileType
  */
 object ProjectSchemaGroups {
 
+    private val LOG = logger<ProjectSchemaGroups>()
+
     fun detect(project: Project): List<SchemaGroup> {
         val index = ProjectRootManager.getInstance(project).fileIndex
         val files = FileTypeIndex.getFiles(GraphqlFileType, GlobalSearchScope.projectScope(project))
@@ -37,6 +40,7 @@ object ProjectSchemaGroups {
             runCatching { VfsUtilCore.loadText(config) }.getOrNull()
         }
         val configProjects = configText?.let { GraphqlConfigParser.parseProjects(it) }
+        LOG.info("schema files: ${files.size} found, relative paths ${paths.map { it.first }}, .graphqlconfig projects ${configProjects?.keys}")
         val fingerprintInputs = paths + listOf((".graphqlconfig" to (configText?.hashCode()?.toLong() ?: 0L)))
         return SchemaCache.getOrCompute(project.locationHash, fingerprintInputs) {
             SchemaDiscovery.discover(paths.map { it.first }, configProjects)
