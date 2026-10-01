@@ -59,7 +59,7 @@ object SchemaDiscovery {
         val normalizedGlob = glob.replace('\\', '/')
         val regex = Regex(
             normalizedGlob.split("**").joinToString(".*") { segment ->
-                segment.split("*").joinToString(".*") { literal -> Regex.escape(literal) }
+                segment.split("*").joinToString("[^/]*") { literal -> Regex.escape(literal) }
             },
         )
         return regex.matches(normalizedPath)

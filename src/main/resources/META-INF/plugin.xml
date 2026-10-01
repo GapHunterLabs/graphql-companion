@@ -7,7 +7,8 @@
         <p>Fast syntax highlighting for <code>.graphql</code>/<code>.graphqls</code>
         files that stays fast on large schema files, and multi-schema
         discovery that works out of the box — with or without a
-        <code>.graphqlconfig</code> file.</p>
+        <code>.graphqlconfig</code> file; the detected schema groups are
+        listed in Settings &gt; Tools &gt; GraphQL Companion.</p>
         <p>Built with a purpose-made, single-pass lexer instead of a
         general-purpose parser struggling on scope resolution — the direct,
         structural fix for large schema files becoming slow and
@@ -23,7 +24,7 @@
         <lang.parserDefinition language="GraphQLCompanion" implementationClass="dev.gaphunter.graphqlcompanion.lang.GraphqlParserDefinition"/>
         <lang.syntaxHighlighterFactory language="GraphQLCompanion" implementationClass="dev.gaphunter.graphqlcompanion.lang.GraphqlSyntaxHighlighterFactory"/>
         <applicationService serviceImplementation="dev.gaphunter.graphqlcompanion.settings.GraphqlCompanionSettings"/>
-        <applicationConfigurable
+        <projectConfigurable
             parentId="tools"
             instance="dev.gaphunter.graphqlcompanion.settings.GraphqlCompanionConfigurable"
             id="dev.gaphunter.graphqlcompanion.settings.GraphqlCompanionConfigurable"

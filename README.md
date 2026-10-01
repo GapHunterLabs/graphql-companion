@@ -43,7 +43,10 @@ Born from real evidence in JetBrains's own official GraphQL plugin
 - **Detected groups are visible in Settings**, not a black box — the
   direct fix for "the documentation for setting up scopes is terrible":
   users can see what was actually detected without reading any docs at
-  all.
+  all. (Before 0.1.2 this page never showed anything: the discovery was
+  never run on the project, and the page always said "No schema files
+  detected yet". It now runs in the background each time the page
+  opens.)
 
 ## Usage
 

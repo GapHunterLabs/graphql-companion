@@ -5,7 +5,10 @@ import com.intellij.openapi.components.State
 import com.intellij.openapi.components.Storage
 import com.intellij.openapi.components.service
 
-/** v0.1 has no user-configurable rules (unlike the other 4 plugins) -- this exists to persist the last-detected schema group summary shown in the Configurable, not behavior toggles. */
+/**
+ * v0.1 has no user-configurable rules. `lastDetectedGroupSummary` is kept only so existing settings files still load:
+ * nothing ever wrote it, and since 0.1.2 the Settings page computes the groups itself (see ProjectSchemaGroups).
+ */
 @State(name = "GraphqlCompanionSettings", storages = [Storage("graphqlCompanion.xml")])
 class GraphqlCompanionSettings : PersistentStateComponent<GraphqlCompanionSettings.State> {
 
