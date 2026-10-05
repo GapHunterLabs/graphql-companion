@@ -59,10 +59,12 @@ Open any `.graphql`/`.graphqls` file — syntax highlighting is automatic.
 Settings > Tools > GraphQL Companion shows the schema groups detected in
 the current project.
 
-## Enterprise / Team Licensing
+## Support
 
-Need enterprise features, schema validation, or team licensing? Contact
-us at **gaphunterlabs@gmail.com**.
+- **Bugs and feature requests:** [GitHub Issues](https://github.com/GapHunterLabs/graphql-companion/issues)
+- **Questions, or custom rules for a team's codebase:** **gaphunterlabs@gmail.com**
+- **Security vulnerabilities:** report privately as described in [SECURITY.md](SECURITY.md), not in a public issue.
+- **Privacy and network behavior:** [PRIVACY.md](PRIVACY.md)
 
 ## Development
 
